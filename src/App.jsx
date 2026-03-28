@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Leaf, Brain, Anchor, ArrowRight, Heart, Users, Globe } from 'lucide-react';
 
-
 // Color Palette defined in the prompt:
 // Deep Ocean Blue: #0F2A3D
 // Teal: #1C6E73
@@ -9,18 +8,15 @@ import { Menu, X, Leaf, Brain, Anchor, ArrowRight, Heart, Users, Globe } from 'l
 // Seafoam: #9ED9CC
 // Warm Sand: #F4E9DA
 
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#0F2A3D] shadow-lg py-4' : 'bg-transparent py-6'}`}>
@@ -30,7 +26,7 @@ const Navbar = () => {
             <OctopusIcon className="w-8 h-8 text-[#F06A8B]" />
             <span className="text-[#F4E9DA] font-bold text-xl tracking-wide">Pink Octopus Inc.</span>
           </div>
-         
+          
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
             {['Games', 'Studio', 'Community', 'Journal'].map((item) => (
@@ -43,7 +39,6 @@ const Navbar = () => {
             </button>
           </div>
 
-
           {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="text-[#F4E9DA]">
@@ -52,7 +47,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-
 
       {/* Mobile Menu */}
       {isOpen && (
@@ -73,14 +67,13 @@ const Navbar = () => {
   );
 };
 
-
 const Hero = () => (
   <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden bg-gradient-to-br from-[#0F2A3D] to-[#1C6E73]">
     {/* Subtle Background Elements */}
     <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10 pointer-events-none">
       <OctopusIcon className="w-[800px] h-[800px] absolute -right-40 -bottom-40 text-white transform rotate-12" />
     </div>
-   
+    
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="max-w-3xl">
         <h1 className="text-4xl md:text-6xl font-extrabold text-[#F4E9DA] leading-tight mb-6">
@@ -105,7 +98,6 @@ const Hero = () => (
   </section>
 );
 
-
 const Features = () => {
   const features = [
     {
@@ -124,7 +116,6 @@ const Features = () => {
       desc: "Creative freedom without corporate pressure. We will never become publicly traded or break our basic business ethics."
     }
   ];
-
 
   return (
     <section className="py-20 bg-[#F4E9DA]" id="studio">
@@ -148,7 +139,6 @@ const Features = () => {
     </section>
   );
 };
-
 
 const FeaturedGame = () => (
   <section className="py-24 bg-white" id="games">
@@ -182,7 +172,6 @@ const FeaturedGame = () => (
   </section>
 );
 
-
 const Philosophy = () => (
   <section className="py-24 bg-[#0F2A3D] text-[#F4E9DA]">
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -207,7 +196,6 @@ const Philosophy = () => (
     </div>
   </section>
 );
-
 
 const SymbolSection = () => (
   <section className="py-24 bg-[#1C6E73] text-white overflow-hidden" id="community">
@@ -242,6 +230,38 @@ const SymbolSection = () => (
   </section>
 );
 
+const WaitlistCTA = () => (
+  <section className="py-24 bg-[#F06A8B] relative overflow-hidden" id="contact">
+    {/* Background abstract shapes for depth */}
+    <div className="absolute top-0 right-0 w-64 h-64 bg-[#d85c7a] rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+    <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#f48eb4] rounded-full mix-blend-multiply filter blur-3xl opacity-50 transform -translate-x-1/2 translate-y-1/2"></div>
+
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <span className="text-[#0F2A3D] font-extrabold tracking-widest uppercase text-sm mb-4 block">We Are Here.</span>
+      <h2 className="text-5xl md:text-7xl font-black text-[#F4E9DA] mb-6 leading-tight">
+        Building Something <br className="hidden md:block" /> Worth The Wait.
+      </h2>
+      <p className="text-xl md:text-2xl mb-10 font-medium text-[#0F2A3D] leading-relaxed max-w-3xl mx-auto">
+        Great ecosystems take time to cultivate. Release dates are currently pending while we perfect our debut experience. Don't just watch this space—join our inner circle.
+      </p>
+      
+      <form className="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto" onSubmit={(e) => e.preventDefault()}>
+        <input 
+          type="email" 
+          placeholder="Enter your email address" 
+          className="px-8 py-5 rounded-full border-none bg-[#F4E9DA] text-[#0F2A3D] focus:outline-none focus:ring-4 focus:ring-[#1C6E73]/50 w-full sm:w-auto flex-1 shadow-inner text-lg placeholder-[#0F2A3D]/50 font-medium"
+          required
+        />
+        <button type="submit" className="bg-[#0F2A3D] hover:bg-[#1C6E73] text-[#F4E9DA] px-10 py-5 rounded-full font-bold text-lg transition-all shadow-xl hover:-translate-y-1">
+          Keep Me Updated
+        </button>
+      </form>
+      <p className="mt-6 text-sm text-[#0F2A3D] font-bold opacity-75">
+        No corporate spam. Just meaningful updates on our progress.
+      </p>
+    </div>
+  </section>
+);
 
 const Footer = () => (
   <footer className="bg-[#0F2A3D] py-12 border-t border-[#1C6E73] text-[#9ED9CC]">
@@ -263,7 +283,6 @@ const Footer = () => (
   </footer>
 );
 
-
 // Custom Minimalist Octopus Icon SVG
 const OctopusIcon = ({ className }) => (
   <svg viewBox="0 0 100 100" className={className} fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -272,16 +291,17 @@ const OctopusIcon = ({ className }) => (
     {/* Eyes */}
     <circle cx="38" cy="45" r="4" fill="#0F2A3D" />
     <circle cx="62" cy="45" r="4" fill="#0F2A3D" />
-    {/* Tentacles (simplified representation of 8) */}
-    <path d="M30 65 C20 80, 10 75, 15 90" stroke="currentColor" strokeWidth="6" strokeLinecap="round" fill="none" />
-    <path d="M38 63 C30 85, 25 80, 30 95" stroke="currentColor" strokeWidth="6" strokeLinecap="round" fill="none" />
-    <path d="M46 62 C45 85, 40 85, 45 98" stroke="currentColor" strokeWidth="6" strokeLinecap="round" fill="none" />
-    <path d="M54 62 C55 85, 60 85, 55 98" stroke="currentColor" strokeWidth="6" strokeLinecap="round" fill="none" />
-    <path d="M62 63 C70 85, 75 80, 70 95" stroke="currentColor" strokeWidth="6" strokeLinecap="round" fill="none" />
-    <path d="M70 65 C80 80, 90 75, 85 90" stroke="currentColor" strokeWidth="6" strokeLinecap="round" fill="none" />
+    {/* Tentacles (8) */}
+    <path d="M28 64 C15 80, 5 75, 10 90" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
+    <path d="M34 65 C25 85, 20 80, 25 95" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
+    <path d="M40 66 C35 88, 30 85, 38 98" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
+    <path d="M46 66 C45 90, 42 90, 48 100" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
+    <path d="M54 66 C55 90, 58 90, 52 100" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
+    <path d="M60 66 C65 88, 70 85, 62 98" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
+    <path d="M66 65 C75 85, 80 80, 75 95" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
+    <path d="M72 64 C85 80, 95 75, 90 90" stroke="currentColor" strokeWidth="5" strokeLinecap="round" fill="none" />
   </svg>
 );
-
 
 export default function App() {
   return (
@@ -293,9 +313,9 @@ export default function App() {
         <FeaturedGame />
         <Philosophy />
         <SymbolSection />
+        <WaitlistCTA />
       </main>
       <Footer />
     </div>
   );
 }
-
